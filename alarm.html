@@ -108,6 +108,9 @@ function start() {
 function hidePopup() {
     var overlay = document.getElementById('overlay');
     overlay.classList.add('hidden'); 
+    setTimeout(function() {
+                navigationEnabled = true; // 0.5秒后启用导航功能
+            }, 500);
 }
 
 function stopAllAudio() {
@@ -143,6 +146,7 @@ function navigateTo(pageId, audioId) {
     currentPage = pageId;
 }
 function handlePageClick(event) {
+    if (!navigationEnabled) return;
     var windowWidth = window.innerWidth;
     var clickX = event.clientX;
 
